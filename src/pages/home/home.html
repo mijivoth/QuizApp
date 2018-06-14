@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title text-center>
+      Quiz for Students
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="gotoRegister()">
+        Join us!
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="account.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="account.password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button round full (click)="login()">
+    <ion-icon ios="ios-log-in" md="md-log-in">
+      Sign In
+    </ion-icon>
+  </button>
+
+  <ion-buttons end>
+    <button (click)="resetPassword()">
+      Forgot your password? Reset it!
+    </button>
+  </ion-buttons>
+
+
+  <div class="divider" style="width:100%; height: 30px"></div>
+  <button ion-button round full color="campus">
+    <ion-icon ios="ios-school" md="md-school">
+      FH Campus Wien
+    </ion-icon>
+  </button>
+
+</ion-content>

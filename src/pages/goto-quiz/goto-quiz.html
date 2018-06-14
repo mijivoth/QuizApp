@@ -1,0 +1,76 @@
+<ion-header>
+
+  <ion-navbar color="campus">
+    <ion-title>{{ lectureName }}: {{ moduleName }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-slides pager>
+
+    <ion-slide *ngFor="let question of questions; let i of index">
+
+      <h3 text-left style="color: darkgreen">Question. {{ question.question_number }}</h3>
+      <h3 text-left style="font-style: italic; padding-bottom:20px">{{question.question_content}}</h3>
+
+      <ion-list no-lines radio-group>
+        <ion-item-group *ngFor="let answer of answers" let i of index>
+          <ion-item *ngIf="question.question_number === answer.which_question" text-wrap>
+            <ion-label>
+              {{ answer.answer_number}}.{{ answer.answer_content}}
+            </ion-label>
+            <ion-checkbox (ionChange)="selectedAnswer(answer.which_question,answer.answer_number,answer.result)"
+
+                          item-right></ion-checkbox>
+          </ion-item>
+        </ion-item-group>
+      </ion-list>
+
+
+      <button ion-button small round
+              item-right
+              icon-right
+              (click)="checkAnswer(question.explanation)">
+        <ion-icon ios="ios-checkmark"
+                  md="md-checkmark">
+          check
+        </ion-icon>
+      </button>
+
+    </ion-slide>
+  </ion-slides>
+
+
+</ion-content>
+<!--
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let item of items; let i= index">
+      <ion-label>{{item.name}}</ion-label>
+      <ion-checkbox [(ngModel)]="item.isChecked"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <button (click)="getCheckedvalue()">getCheck Value</button>
+</ion-content>
+
+//javascript code
+items: any;
+checkedItems:any;
+constructor(public navCtrl: NavController) {
+this.items = [
+{ name: 'item1', isChecked: true },
+{ name: 'item2', isChecked: false },
+{ name: 'item3', isChecked: false }
+];
+}
+getCheckedvalue () {
+this.checkedItems =  this.items.filter(value => {
+return value.isChecked;
+});
+console.log(this.checkedItems);
+}
+
+
+-->

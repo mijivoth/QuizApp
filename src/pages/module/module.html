@@ -1,0 +1,53 @@
+<!--
+  Generated template for the ModulePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>{{ lectureName }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-item>
+      <button
+        class="add"
+        round small
+        ion-button
+        item-right
+        icon-left
+        margin-bottom
+        color="primary"
+        *ngIf="accesAllowed == true "
+        (click)="addModule(lastIndex + 1)">
+        <ion-icon ios="ios-add" md="md-add"></ion-icon>
+        Add a Module
+      </button>
+    </ion-item>
+
+    <ion-item *ngFor="let module of modules; let last = last">
+      <h2>{{ module.module_number }}. {{module.module_name}} </h2>
+      <button
+        ion-button
+        color="primary"
+        item-right
+        *ngIf="accesAllowed == true"
+        (click)="editEntry(lectureName,module.module_number,module.module_name)">Edit
+      </button>
+      <button
+        ion-button
+        color="joy"
+        item-right
+        (click)="play(lectureName, module.module_number, module.module_name)">Play
+      </button>
+    </ion-item>
+
+
+
+</ion-content>

@@ -1,0 +1,89 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title text-centere>Registration</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div *ngIf="!hideForm">
+    <form [formGroup]="form" (ngSubmit)="saveEntry()">
+
+      <ion-item-group>
+        <ion-item>
+          <ion-label floating color="primary">Surname</ion-label>
+          <ion-input
+            type="text"
+            formControlName="surname"
+            [(ngModel)]="userSurname"></ion-input>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item>
+          <ion-label floating color="primary">Name</ion-label>
+          <ion-input
+            type="text"
+            formControlName="name"
+            [(ngModel)]="userName">
+          </ion-input>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item>
+          <ion-label floating color="primary">Email</ion-label>
+          <ion-input
+            type="email"
+            formControlName="email"
+            [(ngModel)]="userEmail">
+          </ion-input>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item>
+          <ion-label floating color="primary">Password</ion-label>
+          <ion-input
+            type="password"
+            formControlName="password"
+            [(ngModel)]="userPassword">
+          </ion-input>
+        </ion-item>
+      </ion-item-group>
+
+      <div padding>
+    <span style="color: crimson">
+        password must be longer then 6 characters.
+    </span>
+      </div>
+      <ion-item-group>
+        <ion-item>
+          <ion-label floating color="primary">Password again</ion-label>
+          <ion-input
+            type="password"
+            formControlName="password"
+            [(ngModel)]="passwordCompare">
+          </ion-input>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item>
+          <ion-label color="primary">Position</ion-label>
+          <ion-select formControlName="position" [(ngModel)]="userPosition">
+            <ion-option value="Student">Student</ion-option>
+            <ion-option value="Instructor">Instructor</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-item-group>
+
+      <div class="divider" style="width:100%; height: 20px"></div>
+      <button ion-button full block [disabled]="!form.valid" (click)="passwordRight()">Sign Up</button>
+    </form>
+  </div>
+
+</ion-content>

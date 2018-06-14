@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Modul</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="edit()" icon-only>
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let modul of moduls">
+      {{ modul.index }}
+    </button>
+  </ion-list>
+
+
+</ion-content>

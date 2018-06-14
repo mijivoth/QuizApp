@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="joy">
+    <ion-title>
+      Questions
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <button
+      class="add"
+      ion-button
+      item-right
+      icon-right
+      margin-bottom
+      color="primary"
+      (click)="addEntry()">
+      Add a question
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-item>
+
+
+  <ion-item-group *ngFor="let question of questions; let i of index; let first = first; let last = last">
+    <ion-item *ngIf= "isDuplicate(question.question_number) " >
+    <h2>{{ question.question_number }}.{{ question.question_content}} </h2>
+    <button
+      ion-button
+      color="primary"
+      item-right
+      (click)="editEntry({ record: question })">Edit</button>
+    </ion-item>
+  </ion-item-group>
+
+
+</ion-content>

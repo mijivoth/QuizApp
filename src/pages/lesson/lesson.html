@@ -1,0 +1,92 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+
+
+    <ion-title text-center> Lectures </ion-title>
+
+    <ion-buttons start>
+      <button ion-button icon-only (click)="gotoProfile()">
+        <ion-icon name="contact"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item no-lines>
+    <button
+      class="add"
+      round small
+      ion-button
+      item-right
+      icon-left
+      margin-bottom
+      color="primary"
+      *ngIf = "userPosition == 'Instructor'"
+      (click)="addLecture()">
+      <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      Add a Lecture
+    </button>
+  </ion-item>
+
+
+  <ion-list>
+      <ion-item-sliding #item  *ngFor="let itemLecture of itemLectures">
+        <ion-item style="font-family:Verdana">
+          {{ itemLecture.lecture_name }}
+        </ion-item>
+
+        <ion-item-options side="right">
+
+          <button ion-button color="primary"
+                  (click)="viewEntry(item, itemLecture.lecture_name)">
+                  <ion-icon ios="ios-happy" md="md-happy"></ion-icon>View</button>
+
+          <button ion-button color="secondary" *ngIf="userPosition == 'Instructor' && userEmail == itemLecture.instructor_email"
+                  (click)="editEntry(item, itemLecture.lecture_name)">
+                   <ion-icon name="archive"></ion-icon>Edit</button>
+
+          <button ion-button color="danger" *ngIf="userPosition == 'Instructor' && userEmail == itemLecture.instructor_email"
+                  (click)="deleteLecture(item, itemLecture.lecture_name)">
+                   <ion-icon ios="ios-trash" md="md-trash"></ion-icon>Delete</button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+<!--
+    <button
+      ion-button
+      color="secondary"
+      item-right
+      *ngIf="userPosition == 'instructor' && userEmail == item.instructor_email"
+      (click)="editEntry(item.lecture_name)">Edit
+    </button>
+
+
+    <button
+      ion-button
+      color="primary"
+      item-right
+      (click)="viewEntry(item.lecture_name)">View
+    </button>
+
+
+  <ion-item *ngFor="let item of itemLectures">
+    <h2>{{ item.lecture_name }} </h2>
+  </ion-item>
+-->
+
+</ion-content>
+
+
